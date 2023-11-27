@@ -1,0 +1,450 @@
+
+/* Assignments 1 */
+.content{
+    >.box{
+        padding: 15px;
+        >.title{
+            font-size: 18px;
+        }
+    }
+    .cat{
+        padding: 15px;
+    }
+    &.premium{
+        &:before{
+            content: "premium Box";
+        }
+        &:hover{
+            background-color: #eee;
+        }
+    }
+}
+/*******************************************************/
+
+/* Assignments 2 */
+
+.class >{
+    .child{
+        padding:10px;
+    }
+}
+
+.class {
+    >.child{
+        padding:10px;
+    }
+}
+.class {
+    >{
+        .child{
+            padding:10px;
+        }
+    }
+}
+.class > .child{    /* normal css ways*/
+    padding:10px;
+}
+
+/* ************************************************************************* */
+
+/* Assignments 3 */
+
+$name :'class';
+
+.#{$name}{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ************************************************************************* */
+
+/* Assignments 4 */
+
+.parent {              
+    & + .sibling {     // output => .parent + .sibling
+      margin: auto {
+        top: 10px;
+      }
+      & ~ .last {      //output => .parent + .sibling ~ .last
+        padding: 10px;
+      }
+    }
+  }
+
+  /* ************************************************************************* */
+
+/* Assignments 5 */
+
+%temp1{
+    background-color: white;
+    padding: 20px;
+}
+%temp2{
+    border: 1px solid #CCC
+}
+
+.widget {
+    @extend %temp1;
+ }
+
+  .main-border {
+    @extend %temp1;
+    @extend %temp2;
+    
+  }
+  .my-class {
+    @extend %temp2;
+    font-weight: bold;
+    margin: 20px auto;
+  }
+
+  /* ************************************************************************* */
+/* Assignments 6 */
+
+%widget {
+    background-color: white;
+    padding: 20px;
+  }
+  %main-border {
+    border: 1px solid #CCC
+  }
+  %my-class {
+    font-weight: bold;
+    margin: 20px auto;
+  } 
+  
+  .my-class{
+      @extend %widget;
+  }
+  
+  .my-class{
+    @extend %main-border;
+}
+
+.my-class{
+    @extend %my-class;
+}
+  /* ************************************************************************* */
+/* Assignments 7 */
+
+  %temp3{
+    font-size: 20px;
+  }
+  
+  %temp4{
+    font-weight: bold;
+  }
+
+  %temp5{
+    font-size: 16px;
+  }
+
+
+  .box{
+    h2{
+        @extend %temp3;
+    }
+    p{
+        @extend %temp3;
+    }
+  }
+
+  @mixin temp-4{
+    font-weight: bold;
+  }
+
+  @mixin temp-5{
+    font-size: 16px;
+  }
+
+   @media (max-width: 575px) {
+    .box {
+      h2 {
+        @include temp-5;
+        span {
+            @include temp-4;
+
+        }
+      }
+      p {
+        @include temp-5;
+
+        span {
+            @include temp-4;
+
+        }
+      }
+    }
+  }
+
+/* ************************************************************************* */
+/* Assignments 8 */
+
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+
+$link-color : $green;
+$link-hover :$red;
+
+// Do Not Edit Here
+.box a {
+    color: $link-color;
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+/* ************************************************************************* */
+/* Assignments 9 */
+
+//use @use 'Address of the files'
+
+/* ************************************************************************* */
+/* Assignments 10 */
+
+$var1 : 'box';
+$var2 : '-holder';
+$var3 : '-content';
+
+.#{$var1}{
+    font-size: 20px;
+}
+.#{$var1}#{$var2}{
+    width: 1000px;
+}
+.#{$var1}#{$var2}#{$var3}{
+margin: auto;
+}
+
+/* ************************************************************************* */
+/* Assignments 11 */
+
+$main: "school";
+$child: "box";
+$language: "en"; // English
+$gap: 20px;
+
+
+.#{$main}{
+  padding: 20px;
+  @if($language == "en"){
+    direction: ltr;
+  }@else{
+    direction: rtl;
+  }
+  @if($language == "en"){
+    margin-left: 20px;
+  }@else{
+    margin-right: 20px;
+
+  }
+  .#{$main}-#{$child}{
+    padding:#{$gap - 10px};
+  }
+  &:hover{
+    .#{$main}-#{$child}{
+      background-color: #eee;
+    }
+  }
+}
+
+
+/* ************************************************************************* */
+/* Assignments 12 */
+
+// SASS Code
+$main-color: red;
+$alt-color: blue;
+
+// Needed Output
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: #{$main-color} */
+/* Website Theme Alternate Color Is: #{$alt-color} */
+
+/* ************************************************************************* */
+/* Assignments 13 */
+
+
+// SASS Code
+$number: 10;
+$number: 8;
+$number: 5;
+
+
+// Larger Than 8
+.class {
+  @if($number > 8){
+    color: blue;
+  }@else if($number > 5){
+    color: green;
+  }@else{
+    color: red;
+  }
+}
+
+/* ************************************************************************* */
+/* Assignments 14 */
+
+// SASS Code
+$number: 10;
+$color: red;
+$theme: light;
+
+// Write If Condition Code Here
+
+
+// Output
+.class {
+  @if not ($number > 5 and $color == red and $theme != light){
+    color: red;
+  }
+}
+
+/* ************************************************************************* */
+/* Assignments 15 */
+
+// SASS Code
+$number: 8;
+
+.box{
+  @if($number >= 10){
+    background-color: #EEE;
+    }
+    @if($number >=9){
+      text-align: center;
+  }
+}
+
+/* ************************************************************************* */
+/* Assignments 16 */ 
+
+
+@mixin arrow($dir){
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -40px;
+  @if($dir == 'top'){
+    border-bottom-color: red;
+  }@else if($dir == 'bottom'){
+    border-top-color: red;
+  }@else if($dir == 'left'){
+    border-right-color: red;
+  }@else if($dir == 'right'){
+    border-left-color: red;
+  }
+}
+
+.element {
+  &:before {
+    @include arrow("top");
+  }
+}
+
+/* ************************************************************************* */
+/* Assignments 17 */ 
+
+$grid-cols :16;
+
+@for $i from 1 through $grid-cols{
+  .col-#{$i}{
+    width: percentage($i / $grid-cols);
+  }
+}
+
+/* ************************************************************************* */
+/* Assignments 18 */ 
+
+$names:
+  "books" 20px red 18,
+  "games" 30px green 18,
+  "dvds" 20px blue;
+
+
+  @each $name , $padding , $color ,$font  in $names{
+    .#{$name}{
+      padding: $padding;
+      color: $color;
+      font-size: if($font,$font ,16);    //if(condition ,if True,if False)
+      border-bottom: 2px solid $color;
+    }
+  }
+
+  /* ************************************************************************* */
+/* Assignments 19 */ 
+
+$init: 1;
+
+@while $init <= 5{
+  .circle-#{$init * 100}{
+    width: ($init * 100px);
+    height: ($init * 100px);
+    border-radius: ($init * 100px) /2;
+  }
+  $init:$init+1;
+}
+
+ /* ************************************************************************* */
+/* Assignments 20 */ 
+
+@for $i from 1 through 5{
+  .circle-#{$i * 100}{
+    width: ($i * 100px);
+    height: ($i * 100px);
+    border-radius: ($i * 100px) /2;
+  }
+}
+
+ /* ************************************************************************* */
+/* Assignments 21 */ 
+
+/*
+// Write Mixin Code Here
+@mixin placeholder(){
+  :placeholder;
+}
+
+// Using
+textarea {
+  @include placeholder {
+    color: #777;
+  }
+}
+*/
+
+ /* ************************************************************************* */
+/* Assignments 22 */ 
+
+$num: 2;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@while($start <= 1600){
+  box-#{$start}{
+    width: $start;                    //100 200 400 800 1600
+    height: double($start);       //200 400 800 1600 3200                                   
+  }
+  $start:$start * 2;
+}
+
+ /* ************************************************************************* */
+/* Assignments 23 */ 
+
+@function get-total ($nums...){
+  $tot:0;
+  @each $num in $nums{
+    $tot : $num + $tot;
+  }
+  @return $tot;
+}
+.box {
+  top: get-total(100, 50, 20);
+  right: get-total(100, 50);
+}
